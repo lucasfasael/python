@@ -9,13 +9,13 @@ valor5 = 1.5 * q
 
 if(c==1):
     print(valor1)
-if(c==2):
+elif(c==2):
     print(valor2)
-if(c==3):
+elif(c==3):
     print(valor3)
-if(c==4):
+elif(c==4):
     print(valor4)
-if(c==5):
+elif(c==5):
     print(valor5)
 else:
     print("Escolha um código compatível.")
