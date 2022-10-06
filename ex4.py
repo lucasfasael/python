@@ -1,8 +1,15 @@
-cont = 0;
+n1 = int(input("Me diga um número inteiro : "))
+n2 = int(input("Me diga outro número inteiro : "))
 
-n1 = int(input("Qual o primeiro número ? : "))
-if(n1>1 and n1)
-n2 = int(input("Qual o segundo número ? : "))
-n3= int(input("Qual o terceiro número ? : "))
-n4 = int(input("Qual o quarto número ? : "))
-n5 = int(input("Qual o quinto número ? : "))
+
+if(n1 < n2):
+    cont = n1 + 1;
+    while cont < n2:
+        print("Os números inteiros que estão entre o intervalo selecionado são: {}".format(cont))
+        cont = cont + 1;
+
+if(n2 < n1):
+    cont = n2 + 1;
+    while (cont < n1):
+        print("Os números inteiros que estão entre o intervalo selecionado são: {}".format(cont))
+        cont = cont + 1;
