@@ -8,9 +8,8 @@ ap = 0;
 rp = 0;
 rpp = 0;
 
-while(condicao):
-    matricula = int(input("Qual a matrícula do {}º aluno ? : ".format(x+1)))
-    if(matricula == -1):
+def encerramento():
+        global condicao;
         condicao = 0;
         print("O aluno {}, da matrícula: {}, é o aluno com a maior média, atingindo uma média incrível de {}".format(mnome, mmatricula, mm))
         print("O aluno {}, da matrícula: {}, é o aluno com a menor média, atingindo uma média de {}, que decepção ...".format(nnome, nmatricula, nm))
@@ -18,6 +17,11 @@ while(condicao):
         print("A quantidade de alunos aprovados foi de: {} alunos, sendo que a turma é de {} alunos".format(ap, x))
         print("A quantidade de alunos reprovados foi de: {} alunos, sendo que a turma é de {} alunos".format(rp, x))
         print("Dos alunos reprovados {} tiraram 0 em pelo menos uma das notas.".format(rpp))
+
+while(condicao):
+    matricula = int(input("Qual a matrícula do {}º aluno ? : ".format(x+1)))
+    if(matricula == -1):
+        encerramento()
 
     elif(matricula != -1):
       nome = input("Qual o nome do {}º aluno ? : ".format(x+1))
