@@ -1,6 +1,6 @@
-path = 'aula-abr-03'
+path = 'trabalho_24_04'
 
-nome = f'{path}\\dados.csv'
+nome = 'dados.csv'
 
 
 dataHead = []
@@ -28,12 +28,14 @@ with open(nome, 'r', encoding='utf-8') as arquivo:
         journal = conteudo_linha[len(conteudo_linha) - 2]
         conteudo_linha.pop()
         conteudo_linha.pop()
-
+        
         conteudo_linha = ','.join(conteudo_linha).split('"')
-
+        
         conteudo_linha.reverse()
-
-        authors = conteudo_linha[1]
+        if(doi == ''):
+            authors = conteudo_linha[0].strip(",")
+        else:
+            authors = conteudo_linha[1]
         conteudo_linha.pop(1)
 
         abstract = ','.join(conteudo_linha).strip(',')
@@ -44,7 +46,7 @@ with open(nome, 'r', encoding='utf-8') as arquivo:
     arquivo.close()
 
 
-with open(f'{path}/saida.html', 'w', encoding='utf-8') as arq_saida:
+with open('saida.html', 'w', encoding='utf-8') as arq_saida:
 
     arq_saida.write('''
 <!DOCTYPE html>
