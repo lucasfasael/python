@@ -1,26 +1,5 @@
-# CRUD DE URLS
-
-
-# VALIDAR URL (FUNÇÃO BOTÃO)
-
-
-# TELAS:
-
-
-# BOAS VINDAS - com mensagem informar as funcionalidades (incluindo dos desafios extras)
-
-
-# TELA DO CRUD
-
-
-# DETALHES TECNICOS
-
-
-# BANCO: SQLITE
-
-
-# GUI: TKINTER
-
+#rodar esse app
+#precisa importar o requests
 
 from tkinter import *
 from tkinter import ttk
