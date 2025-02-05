@@ -30,23 +30,26 @@ export default function WebScraper() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Extrator de Texto Web</h1>
-      <input
-        className="border p-2 w-full mb-2"
-        type="text"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        placeholder="Digite a URL da página"
-      />
-      <button
-        className="bg-blue-500 text-white px-4 py-2"
-        onClick={fetchText}
-        disabled={loading}
-      >
-        {loading ? "Extraindo..." : "Extrair Texto"}
-      </button>
-      <pre className="mt-4 p-2 border whitespace-pre-wrap">{text}</pre>
-    </div>
+    <body>
+      <div className="max-w-2xl mx-auto p-6">
+        <h1 className="text-2xl font-bold mb-4">Text Hunter</h1>
+        <input
+          className="border p-2 w-full mb-2"
+          type="text"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder="Digite a URL da página . . ."
+        />
+        <button
+          className="bg-blue-500 text-white px-4 py-2"
+          onClick={fetchText}
+          disabled={loading}
+        >
+          {loading ? "Extraindo..." : "Extrair Texto"}
+        </button>
+        <pre className="mt-4 p-2 border whitespace-pre-wrap">{text}</pre>
+      </div>
+    </body>
   );
 }
+

@@ -12,4 +12,5 @@ for x in range(20):
 
 print("A lista é: {}".format(lista))
 print("Os pares dela são: {}".format(listaPAR))
+
 print("Os impares dela são: {}".format(listaIMPAR))

@@ -1,52 +1,30 @@
-from flask import Flask, request, jsonify
+import time
+
+from bs4 import BeautifulSoup
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from bs4 import BeautifulSoup
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 app = Flask(__name__)
 CORS(app)
 
-def accept_cookies(navegador):
-    try:
-        
-        WebDriverWait(navegador, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//button[contains(text(), 'aceitar') or contains(text(), 'OK') or contains(text(), 'accept')]"))
-        )
-        
-        # Tenta clicar no botão de aceitação
-        buttons = navegador.find_elements(By.XPATH, "//button[contains(text(), 'aceitar') or contains(text(), 'OK') or contains(text(), 'accept')]")
-        if buttons:
-            buttons[0].click()
-            print("Cookies aceitos com sucesso!")
-            return True
-        
-        # Caso não encontre, tenta verificar se está dentro de um iframe
-        iframe = navegador.find_elements(By.TAG_NAME, "iframe")
-        if iframe:
-            navegador.switch_to.frame(iframe[0])  # Acessa o iframe
-            buttons = navegador.find_elements(By.XPATH, "//button[contains(text(), 'aceitar') or contains(text(), 'OK') or contains(text(), 'accept')]")
-            if buttons:
-                buttons[0].click()
-                print("Cookies aceitos com sucesso dentro de iframe!")
-                navegador.switch_to.default_content()
-                return True
-        print("Botão de aceitar cookies não encontrado.")
-        return False
-    except Exception as e:
-        print(f"Erro ao tentar aceitar cookies: {e}")
-        return False
-
 def get_page_text(url):
 
     options = Options()
-    options.add_argument("--headless")
+    options.add_argument("--headless")  # Ativa o modo headless
+    options.add_argument("--no-sandbox")  # Para evitar problemas de sandbox no ambiente headless
+    options.add_argument("--disable-dev-shm-usage")  # Reduz problemas com a memória compartilhada]
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
+
     navegador = webdriver.Chrome(options=options)
 
     navegador.get(url)
-    accept_cookies(navegador)
-
+    time.sleep(2)
     page_html = navegador.page_source
     navegador.quit()
 
