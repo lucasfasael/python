@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
+import VideoButton from "./components/spellCaster";
+import Image from "next/image";
 export default function WebScraper() {
   const [url, setUrl] = useState("");
   const [text, setText] = useState("");
@@ -30,26 +31,70 @@ export default function WebScraper() {
   };
 
   return (
-    <body>
-      <div className="max-w-2xl mx-auto p-6">
-        <h1 className="text-2xl font-bold mb-4">Text Hunter</h1>
-        <input
-          className="border p-2 w-full mb-2"
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="Digite a URL da página . . ."
+    <div className="mx-auto flex h-full w-full flex-col items-center justify-center p-6">
+      <div className="flex">
+        <h1 className="font-dancing text-stroke-2 text-6xl font-bold text-customOrange">
+          Text Hunter
+        </h1>
+        <Image
+          src="/archer.webp" // Certifique-se de que o arquivo está na pasta public
+          alt="Descrição da imagem"
+          width={160}
+          height={200}
+          className=" ml-72 top-1 absolute object-contain"
         />
-        <button
-          className="bg-blue-500 text-white px-4 py-2"
-          onClick={fetchText}
-          disabled={loading}
-        >
-          {loading ? "Extraindo..." : "Extrair Texto"}
-        </button>
-        <pre className="mt-4 p-2 border whitespace-pre-wrap">{text}</pre>
       </div>
-    </body>
+      <input
+        className="mb-2 w-80 border p-2"
+        type="text"
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+        placeholder="Digite a URL da página . . ."
+      />
+      <button
+        className={`mb-3 flex items-center justify-center px-4 py-2 ${
+          loading
+            ? "bg-blue-500"
+            : text && text !== "Erro ao extrair texto. Verifique a URL."
+              ? "bg-green-500"
+              : "bg-blue-500"
+        }`}
+        onClick={fetchText}
+        disabled={loading}
+      >
+        {loading ? (
+          <>
+            <svg
+              className="mr-2 h-5 w-5 animate-spin text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v8H4z"
+              ></path>
+            </svg>
+            Extraindo...
+          </>
+        ) : (
+          "Extrair Texto"
+        )}
+      </button>
+
+      <pre className="text-stroke-1 w-100 hide-scrollbar h-full overflow-scroll text-wrap font-mono text-3xl font-bold text-white">
+        {text}
+      </pre>
+      <VideoButton></VideoButton>
+    </div>
   );
 }
-

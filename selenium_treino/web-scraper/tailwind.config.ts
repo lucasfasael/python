@@ -11,6 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        customOrange: "#ff5733",
+      },
+      fontFamily: {
+        dancing: ["Dancing Script", "serif"],
       },
     },
   },
