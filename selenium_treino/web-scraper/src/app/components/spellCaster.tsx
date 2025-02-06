@@ -58,6 +58,7 @@ const VideoButton = () => {
           overflow-hidden 
           rounded-full
           hover:brightness-200
+          border-2
       "
       >
         <video

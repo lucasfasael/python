@@ -32,20 +32,20 @@ export default function WebScraper() {
 
   return (
     <div className="mx-auto flex h-full w-full flex-col items-center justify-center p-6">
-      <div className="flex">
+      <div className="flex mt-10">
         <h1 className="font-dancing text-stroke-2 text-6xl font-bold text-customOrange">
           Text Hunter
         </h1>
         <Image
-          src="/archer.webp" // Certifique-se de que o arquivo está na pasta public
+          src="/archer.webp" 
           alt="Descrição da imagem"
           width={160}
           height={200}
-          className=" ml-72 top-1 absolute object-contain"
+          className="-ml-36 top-1 absolute object-contain"
         />
       </div>
       <input
-        className="mb-2 w-80 border p-2"
+        className="mb-2 w-80 border p-2 z-20"
         type="text"
         value={url}
         onChange={(e) => setUrl(e.target.value)}

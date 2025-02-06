@@ -23,6 +23,12 @@ const dancingScript = Dancing_Script({
 export const metadata: Metadata = {
   title: "Text Hunter 🏹",
   description: "Um caçador de textos !",
+  icons:{
+    icon: {
+      url: "/iaGirl.jpeg",
+      
+    }
+  }
 };
 
 export default function RootLayout({
@@ -33,8 +39,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} antialiased`}
-      >
+  className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} 
+              relative 
+              before:content-[''] before:absolute before:inset-0 before:bg-black/30 before:-z-10
+              antialiased`}
+>
         {children}
       </body>
     </html>
