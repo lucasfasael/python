@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import VideoButton from "./components/spellCaster";
+import SpellCaster from "./components/spellCaster";
 import Image from "next/image";
 export default function WebScraper() {
   const [url, setUrl] = useState("");
@@ -37,7 +37,7 @@ export default function WebScraper() {
           Text Hunter
         </h1>
         <Image
-          src="/archer.webp" 
+          src="/archer.webp"
           alt="Descrição da imagem"
           width={160}
           height={200}
@@ -94,7 +94,7 @@ export default function WebScraper() {
       <pre className="text-stroke-1 w-100 hide-scrollbar h-full overflow-scroll text-wrap font-mono text-3xl font-bold text-white">
         {text}
       </pre>
-      <VideoButton></VideoButton>
+      <SpellCaster></SpellCaster>
     </div>
   );
 }

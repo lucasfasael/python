@@ -1,7 +1,15 @@
-const VideoButton = () => {
+import { useState } from "react";
+import ChatModal from "./chatModal";
+
+const SpellCaster = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div
-      className="
+    <>
+      {isModalOpen && <ChatModal onClose={() => setIsModalOpen(false)} />}
+      <div
+        onClick={() => setIsModalOpen(true)}
+        className="
         absolute 
         bottom-6 
         right-6 
@@ -16,10 +24,10 @@ const VideoButton = () => {
         hover:scale-125 
         
         "
-    >
-      {/* Balão de fala */}
-      <div
-        className="
+      >
+        {/* Balão de fala */}
+        <div
+          className="
           relative 
           mb-2 
           rounded-lg 
@@ -31,10 +39,10 @@ const VideoButton = () => {
           text-black 
           shadow-md
       "
-      >
-        Como posso ajudar?
-        <div
-          className="
+        >
+          Como posso ajudar?
+          <div
+            className="
                 absolute 
                 -bottom-2 
                 left /* Posiciona mais para a esquerda */
@@ -47,12 +55,12 @@ const VideoButton = () => {
                 border-r-transparent 
                 border-t-gray-200
         "
-        ></div>
-      </div>
+          ></div>
+        </div>
 
-      {/* Vídeo dentro da div pai */}
-      <div
-        className="
+        {/* Vídeo dentro da div pai */}
+        <div
+          className="
           h-28 
           w-28 
           overflow-hidden 
@@ -60,25 +68,26 @@ const VideoButton = () => {
           hover:brightness-200
           border-2
       "
-      >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="
             h-full 
             w-full 
             rounded-full 
             object-cover
           "
-        >
-          <source src="/spellcaster.mp4" type="video/mp4" />
-          Seu navegador não suporta vídeos.
-        </video>
+          >
+            <source src="/spellcaster.mp4" type="video/mp4" />
+            Seu navegador não suporta vídeos.
+          </video>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default VideoButton;
+export default SpellCaster;
