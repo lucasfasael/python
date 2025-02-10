@@ -11,7 +11,7 @@ export default function WebScraper() {
   const fetchText = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/extract", {
+      const response = await fetch("http://192.168.100.129:8000/extract", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
